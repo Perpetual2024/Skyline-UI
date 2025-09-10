@@ -1,11 +1,10 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
+import Phaser from "phaser";
+import BootScene from "./skyline/gameOffice/scenes/Bootscene";
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
-                        
+const config = {
+  type: Phaser.AUTO,
+  backgroundColor: "#121212",
+  scene: [BootScene]
+};
+
+const game = new Phaser.Game(config);

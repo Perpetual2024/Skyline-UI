@@ -1,10 +1,10 @@
 import Phaser from "phaser";
 import BootScene from "./skyline/gameOffice/scenes/Bootscene";
+import GameScene from "./skyline/gameOffice/scenes/GameScene";
 
 const config = {
   type: Phaser.AUTO,
-  backgroundColor: "#121212",
-  scene: [BootScene]
+  scene: [BootScene, GameScene]
 };
 
 const game = new Phaser.Game(config);

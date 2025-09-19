@@ -1,6 +1,6 @@
 export default class GameEngine {
   constructor() {
-    this.state = "WAITING"; // WAITING | RUNNING | CRASHED | CASHED
+    this.state = "WAITING";
     this.multiplier = 1;
     this.crashPoint = 0;
     this.growthRate = 0.00015;
@@ -37,9 +37,5 @@ export default class GameEngine {
     return this.multiplier;
   }
 
-  reset() {
-    this.state = "WAITING";
-    this.multiplier = 1;
-    this.crashPoint = 0;
-  }
+  
 }

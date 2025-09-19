@@ -69,7 +69,7 @@ export default class GameScene extends Phaser.Scene {
     if (this.engine.state !== "WAITING") return;
 
     this.currentBet = bet;
-    this.autoCashValue = autoCashValue;
+    this.autoCashValue = parseFloat(autoCashValue) || null;
 
     this.engine.startRound();
     this.trailPoints = [];
@@ -113,7 +113,7 @@ export default class GameScene extends Phaser.Scene {
     this.engineSfx.stop();
     this.crashSfx.play();
 
-    this.finishRound(`Crashed @ x${this.engine.multiplier.toFixed(2)}`);
+    this.finishRound(`Crashed @ x${this.engine.multiplier.toFixed(2)} try again`);
     this.events.emit("round-end", { crashed: true });
   }
 
@@ -151,22 +151,23 @@ export default class GameScene extends Phaser.Scene {
 
   // ---------- UPDATE LOOP ----------
   update(time, delta) {
-    const mult = this.engine.update(delta);
-    this.multiplierText.setText(`x${mult.toFixed(2)}`);
+  const mult = this.engine.update(delta);
+  this.multiplierText.setText(`x${mult.toFixed(2)}`);
 
-    // Auto cash-out
-    if (
-      this.engine.state === "RUNNING" &&
-      this.autoCashValue &&
-      mult >= this.autoCashValue
-    ) {
-      this.cashOut();
-    }
+  // check crash first
+  if (this.engine.state === "CRASHED") {
+    this.crash();
+    return;
+  }
 
-    if (this.engine.state === "CRASHED") {
-      this.crash();
-      return;
-    }
+  // then auto-cash
+  if (
+    this.engine.state === "RUNNING" &&
+    this.autoCashValue !== null &&
+    mult >= this.autoCashValue
+  ) {
+    this.cashOut();
+  }
 
     // === Bike + trail (only when running) ===
     if (this.engine.state === "RUNNING") {

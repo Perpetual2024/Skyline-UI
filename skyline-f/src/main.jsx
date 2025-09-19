@@ -118,14 +118,15 @@ function endRoundUI() {
 // -------------------
 // 7) LISTEN FOR SCENE EVENTS
 // -------------------
-const scene = game.scene.keys["GameScene"];
 
-// Update balance when scene reports a cash-out
-scene.events.on("player-cashout", (win) => {
-  const bal = parseFloat(balanceSpan.textContent);
-  balanceSpan.textContent = (bal + win).toFixed(2);
-  feedback.textContent = `+${win.toFixed(2)} added to balance`;
+game.scene.getScene("GameScene").events.once('create', () => {
+  const scene = game.scene.getScene("GameScene");
+
+  scene.events.on("player-cashout", (win) => {
+    const bal = parseFloat(balanceSpan.textContent);
+    balanceSpan.textContent = (bal + win).toFixed(2);
+    feedback.textContent = `+${win.toFixed(2)} added to balance`;
+  });
+
+  scene.events.on("round-end", endRoundUI);
 });
-
-// Reset UI after a round ends (crash or after payout delay)
-scene.events.on("round-end", endRoundUI);

@@ -10,7 +10,8 @@ export default class GameEngine {
     if (this.state !== "WAITING") return;
     this.state = "RUNNING";
     this.multiplier = 1;
-    this.crashPoint = 1.2 + Math.random() * 9; // same as Phaser.FloatBetween
+    this.crashPoint = 1.2 + Math.random() * 9;
+    console.log("[GameEngine] crashPoint", this.crashPoint)
   }
 
   cashOut() {
@@ -18,7 +19,7 @@ export default class GameEngine {
       this.state = "CASHED";
       return this.multiplier;
     }
-    return null;
+    
   }
 
   crash() {

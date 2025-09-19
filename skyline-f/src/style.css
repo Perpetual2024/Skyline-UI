@@ -1,0 +1,79 @@
+/* Remove default spacing */
+body {
+  margin: 0;
+  background: #0d0d1a;
+  font-family: sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#game-container canvas {
+  display: block;
+}
+
+/* #bet-panel {
+  margin-top: 16px;
+  padding: 12px 20px;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+} */
+
+
+/* index.css or style.css */
+#bet-panel {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.55);
+  padding: 12px 16px;
+  border-radius: 8px;
+  max-width: 320px;
+  width: 90%;
+  color: #fff;
+  font-family: sans-serif;
+}
+#bet-panel.hidden {
+  display: none;
+}
+
+
+#bet-panel .field {
+  margin: 8px 0;
+}
+
+#bet-panel input {
+  width: 100%;
+  padding: 6px;
+  font-size: 14px;
+}
+
+#bet-panel .actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+#bet-panel button {
+  flex: 1;
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background: #00aaff;
+  color: white;
+}
+
+#bet-feedback {
+  margin-top: 8px;
+  font-size: 13px;
+  text-align: center;
+}
+

@@ -3,7 +3,7 @@ export default class GameEngine {
     this.state = "WAITING"; // WAITING | RUNNING | CRASHED | CASHED
     this.multiplier = 1;
     this.crashPoint = 0;
-    this.growthRate = 0.0008;
+    this.growthRate = 0.00015;
   }
 
   startRound() {

@@ -6,31 +6,38 @@
     <link rel="stylesheet" href="src/style.css">
     <title>Skyline</title>
   </head>
-  <body>
-    <div id="game-container">
-    <div id="bet-panel" class="hidden">
-  <div class="balance">
-    Balance: <span id="player-balance">1000</span> USD
+ <body>
+  <div id="app-wrapper">
+    <!-- Phaser game goes here -->
+    <div id="game-container"></div>
+    
+    <!-- Controls panel below game -->
+    <div id="controls-panel">
+      <div class="balance-bar">
+        <span>Balance: <span id="player-balance">1000.00</span> USD</span>
+      </div>
+      
+      <div class="input-row">
+        <div class="input-field">
+          <label>Bet Amount</label>
+          <input id="betAmount" type="number" value="0" min="1" step="1" />
+        </div>
+        
+        <div class="input-field">
+          <label>Auto Cash-out (x)</label>
+          <input id="autoCashout" type="number" value="2.0" min="1.01" step="0.1" />
+        </div>
+      </div>
+      
+      <div class="button-row">
+        <button id="placeBet" class="btn-primary">Place Bet</button>
+        <button id="cashOut" class="btn-secondary" disabled>Cash Out</button>
+      </div>
+      
+      <div id="feedback"></div>
+    </div>
   </div>
-
-  <div class="field">
-    <label for="betAmount">Bet Amount</label>
-    <input id="betAmount" type="number" placeholder="Enter bet" min="1" max="1000" />
-  </div>
-
-  <div class="field">
-    <label for="autoCashout">Auto Cash-out (x)</label>
-    <input id="autoCashout" type="number" placeholder="e.g. 2.5" step="0.01" />
-  </div>
-
-  <div class="actions">
-    <button id="placeBet">Place Bet</button>
-    <button id="cashOut" disabled>Cash Out</button>
-  </div>
-
-  <div id="bet-feedback"></div>
-</div>
-</div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+  
+  <script type="module" src="/src/main.jsx"></script>
+</body>
 </html>
